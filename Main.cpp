@@ -26,9 +26,9 @@ int main()
 	for (int count = 0; count < 84; count++)
 		Array[count] = new int[8];
 
-	int **KNF = new int*[256]; // две строки в массиве
-	for (int count = 0; count < 256; count++)
-		KNF[count] = new int[9];
+	int **KNF = new int*[512]; // две строки в массиве
+	for (int count = 0; count < 512; count++)
+		KNF[count] = new int[10];
 
 	Generate(Array);
 	//Вывод уравнений в файл
@@ -156,11 +156,11 @@ int main()
 	create_knf(Array, KNF);
 	file << "\n";
 	file << "\n"<<"Построим КНФ по таблице истинности: \n";
-	file << "abcdfghiF \n";
+	file << "abcdefghiF \n";
 	//___________________________________________________________________________________
-		for (int i = 0; i < 256; i++)
+		for (int i = 0; i < 512; i++)
 		{
-			for (int j = 0; j < 9; j++)
+			for (int j = 0; j < 10; j++)
 			{
 				file << KNF[i][j];
 			}
@@ -173,11 +173,11 @@ int main()
 	file << "\n";
 	file << "Полученная КНФ имеет вид: \n";
 	//file << "\n";
-	for (int i = 0; i < 256; i++)
+	for (int i = 0; i < 512; i++)
 	{
-		if (KNF[i][8] == 0)
+		if (KNF[i][9] == 0)
 		{
-			for (int j = 0; j < 8; j++)
+			for (int j = 0; j < 9; j++)
 			{
 				if (j == 0)
 					file << "(";
@@ -209,20 +209,25 @@ int main()
 				}
 				case 4:
 				{
-					file << "fv";
+					file << "ev";
 					break;
 				}
 				case 5:
 				{
-					file << "gv";
+					file << "fv";
 					break;
 				}
 				case 6:
 				{
-					file << "hv";
+					file << "gv";
 					break;
 				}
 				case 7:
+				{
+					file << "hv";
+					break;
+				}
+				case 8:
 				{
 					file << "i)";
 					break;
